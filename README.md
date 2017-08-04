@@ -1,2 +1,1 @@
-# connectfour-nodejs-react
-Multiplayer connect four game using NodeJS &amp; ReactJS
+## Connect Four game build using ReactJS & Socket.io
