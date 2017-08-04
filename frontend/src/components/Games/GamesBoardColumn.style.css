@@ -1,0 +1,35 @@
+.GamesBoardColumn{
+    float: left;
+    border-right: 1px solid #ccc;
+    width: 13%;
+    height: 100%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.GamesBoardColumn:first-child{
+    border-left: 1px solid #ccc;
+}
+
+.placementSpot{
+    position:relative;
+    width:100%; height:0;
+    padding-bottom: 100%;
+    margin:0 auto;
+    overflow:hidden;
+}
+.placementSpot:after{
+    content:'';
+    position:absolute;
+    left: 0;
+    top: 0;
+
+    border-radius:100%;
+    width:100%; height:0;
+    padding-bottom: 100%;
+    box-shadow: 0px 0px 0px 2000px #E3DFD2;
+}
+
+.GamesBoardColumn:hover .placementSpot:after{
+    box-shadow: 0px 0px 0px 2000px #e67e22;
+    cursor: pointer;
+}
