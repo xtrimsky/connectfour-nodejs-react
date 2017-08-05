@@ -1,3 +1,17 @@
 .GamesBoard{
     width: 100%;
 }
+
+.columnsWrapper:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.statusMessage{
+    border: 2px solid #2980b9;
+    background-color: #3498db;
+    color: white;
+    width: 91%;
+    padding: 4px 2px;
+}

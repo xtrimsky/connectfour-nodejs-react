@@ -4,10 +4,6 @@ import GamesBoard from './GamesBoard.js';
 import './Games.style.css';
 
 export default class Games extends Component {
-  // static propTypes = {}
-  // static defaultProps = {}
-  // state = {}
-
   render() {
     return (
       <div className={Games}>
@@ -15,7 +11,7 @@ export default class Games extends Component {
           Player {this.props.match.params.number}
         </h1>
         <div className="GamesBoardWrapper">
-        <GamesBoard/>
+        <GamesBoard playerNumber={this.props.match.params.number}/>
         </div>
       </div>
     );
