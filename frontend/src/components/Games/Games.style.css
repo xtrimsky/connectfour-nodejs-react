@@ -1,6 +1,8 @@
 .GamesBoardWrapper{
     max-width: 640px;
-    width: 100%;
+    width: 90%;
     height: auto;
     margin: 0 auto;
+    position: relative;
+    left: 12px;
 }

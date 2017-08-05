@@ -24,6 +24,25 @@ export default class GamesBoardColumn extends Component {
         this.setState({ columnHeight: height });
     };
     
+    updateColumnData(newValues){
+        var mapClassResult = [];
+        
+        var i;
+        for(i = 0; i < newValues.length; i++){
+            if(newValues[i] === 0) {
+                mapClassResult.push('placementSpot');
+            } else if(newValues[i] === 1) {
+                mapClassResult.push('placementSpot green');
+            } else if(newValues[i] === 2) {
+                mapClassResult.push('placementSpot red');
+            }
+        }
+        
+        this.setState({
+            'mapClass': mapClassResult
+        });
+    };
+    
     //method called by parent component to animate a block falling and then displaying it in the correct position
     //playerNumber = (1 or 2), display the color based on the player number
     //finalIndex index where the final block will fall to, the bottom one is 0, the top one is 5
@@ -45,7 +64,7 @@ export default class GamesBoardColumn extends Component {
             color: 'green'
         };
         
-        if(playerNumber === '1') {
+        if(playerNumber === '1' || playerNumber === 1) {
             this.animateGreenBlock();
         } else {
             this.animation.color = 'red';
