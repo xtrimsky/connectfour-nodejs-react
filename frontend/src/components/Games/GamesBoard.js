@@ -65,14 +65,14 @@ export default class GamesBoard extends Component {
         this.verifyGameMap(data.gameMap);
         
         var currentPlayer = parseInt(this.props.playerNumber, 10);
-        var opponent = this.props.playerNumber == 2 ? 1 : 2;
+        var opponent = currentPlayer === 2 ? 1 : 2;
         var nextPlayer = parseInt(data.next_player, 10);
         var opponentColumn = 'player'+opponent+'_online';
         var playerColumn = 'player'+currentPlayer+'_online';
         
-        if(data[playerColumn] == false) {
+        if(data[playerColumn] === false) {
             this.API.registerPlayer(currentPlayer);
-        } else if(data[playerColumn] == this.socketIOID) {
+        } else if(data[playerColumn] === this.socketIOID) {
             //we are connected!
             if(data[opponentColumn] === false) {
                 this.setState({
@@ -135,6 +135,7 @@ export default class GamesBoard extends Component {
             case 'blockPlaced':
                 this.onBlockPlaced(data);
                 break;
+            default:
         }
     };
     
