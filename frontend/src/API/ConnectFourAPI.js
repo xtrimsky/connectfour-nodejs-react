@@ -1,5 +1,5 @@
 import openSocket from 'socket.io-client';
-const  socket = openSocket('http://dev.pervychine.com:3001');
+const  socket = openSocket('http://connectfour.pervychine.com:3001');
 
 export default class ConnectFourAPI{
     constructor(_listenerCallback) {
