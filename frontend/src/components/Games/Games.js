@@ -3,6 +3,7 @@ import GamesBoard from './GamesBoard.js';
 
 import './Games.style.css';
 
+/* Games page, displays the player number and the Gamesboard */
 export default class Games extends Component {
   render() {
     return (
@@ -11,7 +12,7 @@ export default class Games extends Component {
           Player {this.props.match.params.number}
         </h1>
         <div className="GamesBoardWrapper">
-        <GamesBoard playerNumber={this.props.match.params.number}/>
+            <GamesBoard playerNumber={this.props.match.params.number}/>
         </div>
       </div>
     );

@@ -40,6 +40,7 @@ export default class GamesBoard extends Component {
         };
     };
     
+    /* checks if the game map needs to be updated, if yes updating visually the columns */
     verifyGameMap(newMap){
         var i,j;
         for(i = 0; i < newMap.length; i++){
@@ -60,6 +61,10 @@ export default class GamesBoard extends Component {
         this.gameMap = newMap;
     };
     
+    /*
+        the state update is the most important socket call, it updates who is playing next, if there are enough or too much players in the game
+        and it also updates the game map
+    */
     onStateUpdate(data){
         this.socketIOID = data.socket_id;
         this.verifyGameMap(data.gameMap);
@@ -110,6 +115,9 @@ export default class GamesBoard extends Component {
         }
     };
     
+    /*
+        if another player places a block
+    */
     onBlockPlaced(data){
         var playerNumber = parseInt(data.playerNumber,10);
         var columnClickedData = this.gameMap[data.columnIndex];
@@ -139,6 +147,13 @@ export default class GamesBoard extends Component {
         }
     };
     
+    /*
+        If someone clicks on a Connect Four column.
+        - we check if the player can play
+        - we update the map
+        - we call the column to display an animation
+        - we make a call to the API to let the other players know
+    */
     handleColumnClick = (columnIndex) => {
         if(this.state.currentGameState !== this.gameStates['_STATE_IT_IS_CURRENT_PLAYERS_TURN_']) {
             return;
