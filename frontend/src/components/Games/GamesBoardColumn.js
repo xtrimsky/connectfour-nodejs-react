@@ -24,16 +24,20 @@ export default class GamesBoardColumn extends Component {
         this.setState({ columnHeight: height });
     };
     
+    /* this is called when the GamesBoard component needs to update the map (usually at the start of a new round). It updates the content of the columns */
     updateColumnData(newValues){
         var mapClassResult = [];
         
         var i;
         for(i = 0; i < newValues.length; i++){
             if(newValues[i] === 0) {
+                //no blocks placed here yet
                 mapClassResult.push('placementSpot');
             } else if(newValues[i] === 1) {
+                //a green block has been placed here
                 mapClassResult.push('placementSpot green');
             } else if(newValues[i] === 2) {
+                //a red block has been placed here
                 mapClassResult.push('placementSpot red');
             }
         }
@@ -99,6 +103,7 @@ export default class GamesBoardColumn extends Component {
             this.animation = {};
             
             //anything in the queue?
+            //this is if the players are clicking before animations are done
             if(this.addBlockQueue.length > 0) {
                 var queueElement = this.addBlockQueue.shift();
                 this.addNewBlock(queueElement.playerNumber, queueElement.finalIndex);
@@ -124,6 +129,10 @@ export default class GamesBoardColumn extends Component {
         this.animateBlockPosition();
     };
     
+    /* 
+        this is only for the animated green block
+        once the block falls into place this object is removed
+    */
     renderGreenBlock(){
         if(!this.state.greenBlock) {
             return;
@@ -132,6 +141,10 @@ export default class GamesBoardColumn extends Component {
         return <div className="greenBlock" style={{top: this.state.animatedBlockPosition}}></div>;
     };
     
+    /* 
+        this is only for the animated red block
+        once the block falls into place this object is removed
+    */
     renderRedBlock(){
         if(!this.state.redBlock) {
             return;
